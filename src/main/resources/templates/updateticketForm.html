@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Ticket Tracker Application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style>
+    .container{
+
+    }
+
+  </style>
+</head>
+<div class="container">
+  <div id="accordion">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="text-left">
+          <h3>Edit Ticket</h3>
+        </div>
+      </div>
+    </div>
+    <article class="card-body">
+      <form  class="form-create" th:action="@{/success}" th:object="${updatetickets}"  method="POST">
+        <div class="panel panel-default">
+          <div id="collapse1" class="collapse show">
+            <div class="panel-body">
+
+              <div class="row">
+                <div class="col-md-3 col-lg-4">
+                  <div class="form-group">
+                    <input type="hidden" name="ticketId" id="ticketId" class="form-control" th:field="*{ticketId}"/>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 col-lg-4">
+                  <div class="form-group">
+                    <label for="ticketitle" class="control-label">Title</label>
+                    <input type="text" name="title" id="ticketitle" class="form-control" th:field="*{ticketTitle}" placeholder="title" required=""/>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-1 col-lg-8">
+                  <div class="form-group">
+                    <label for="shortdescription" class="control-label">Short Description</label>
+                    <input type="text"
+                           class="form-control" name="shortdescription" placeholder="Enter ticket description "
+                           id="shortdescription" aria-label="With textarea" th:field="*{ticketShortDescription}" required/>
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 col-lg-4">
+                  <div class="form-group">
+                    <label for="content" class="control-label">Content</label>
+                    <textarea type="text" name="title" id="content" class="form-control"  th:field="*{content}"
+                              placeholder="Describe your issue" required=""></textarea>
+                    <br>
+                    <input type="file">Upload Image </input>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-lg" id="btnSubmit">Update</button>
+          <a th:href="@{/tickets}" class="btn btn-success btn-lg">Back</a>
+        </div>
+      </form>
+    </article>
+  </div>
+</div>
